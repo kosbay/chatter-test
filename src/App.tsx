@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+
+import ChatPreview from './components/ChatPreview'
+import ChatHistory from './components/ChatHistory'
+import { chats } from './data'
 
 function App() {
+  const [activeChatIndex, setActiveChatIndex] = useState<number>(0)
+  const [refresh, setRefresh] = useState<boolean>(false)
+
+  const handleActiveChatIndex = (index: number) => {
+    setActiveChatIndex(index)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ChatPreview
+        chats={chats}
+        activeChatIndex={activeChatIndex}
+        onChatSelect={handleActiveChatIndex}
+      />
+      <ChatHistory
+        history={chats[activeChatIndex].messages}
+        refresh={refresh}
+        setRefresh={setRefresh}
+      />
     </div>
   );
 }
 
-export default App;
+export default App

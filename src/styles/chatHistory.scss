@@ -1,0 +1,35 @@
+.chatHistory {
+  position: relative;
+  width: 100%;
+  background-color: #EFEAE2;
+  padding: 16px 24px;
+  padding-bottom: 80px;
+  overflow: auto;
+  margin-left: 400px;
+
+  .messageBlock {
+    background-color: #fff;
+    width: fit-content;
+    margin-top: 4px;
+    padding: 8px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+
+    &.self {
+      background-color: #D9FDD2;
+      margin-left: auto;
+    }
+
+    .text {
+
+    }
+
+    .time {
+      margin: inherit;
+      margin-left: 12px;
+      font-size: 12px;
+      color: #667781;
+    }
+  }
+}
